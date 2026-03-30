@@ -1,0 +1,153 @@
+# generated: 2026-03-26
+# project: data-analysis-copilot
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-03-26
+project: data-analysis-copilot
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  # ============================================================================
+  # EPIC 1: Infrastructure & Backend Foundation
+  # ============================================================================
+  epic-1: in-progress
+  1-1-initialize-fastapi-backend: review
+  1-2-define-rest-api-endpoints: review
+  1-3-implement-backend-session-management: review
+  epic-1-retrospective: optional
+
+  # ============================================================================
+  # EPIC 2: Frontend Application Shell & Navigation
+  # ============================================================================
+  epic-2: in-progress
+  2-1-initialize-nextjs-frontend: review
+  2-2-implement-four-panel-layout: review
+  2-3-create-api-client-hook: review
+  epic-2-retrospective: optional
+
+  # ============================================================================
+  # EPIC 3: Data Input & Management
+  # ============================================================================
+  epic-3: in-progress
+  3-1-implement-csv-file-upload-endpoint: review
+  3-2-implement-data-preview-display: review
+  3-3-implement-editable-data-table: review
+  epic-3-retrospective: optional
+
+  # ============================================================================
+  # EPIC 4: Natural Language Chat & Intent Classification
+  # ============================================================================
+  epic-4: in-progress
+  4-1-implement-chat-interface-component: review
+  4-2-implement-intent-classification-node: review
+  epic-4-retrospective: optional
+
+  # ============================================================================
+  # EPIC 5: Execution Plan Generation & Review
+  # ============================================================================
+  epic-5: in-progress
+  5-1-implement-plan-generation-node: review
+  5-2-implement-plan-display-execute-button: review
+  epic-5-retrospective: optional
+
+  # ============================================================================
+  # EPIC 6: Code Generation, Validation & Secure Execution
+  # ============================================================================
+  epic-6: in-progress
+  6-1-implement-code-generation-node: review
+  6-2-implement-ast-code-validator: review
+  6-3-implement-subprocess-sandbox-executor: review
+  6-4-implement-error-translation-layer: review
+  epic-6-retrospective: optional
+
+  # ============================================================================
+  # EPIC 7: Autonomous Self-Correction & Retry Loop
+  # ============================================================================
+  epic-7: in-progress
+  7-1-implement-conditional-edge-routing: review
+  7-2-implement-retry-adaptive-replan: review
+  epic-7-retrospective: optional
+
+  # ============================================================================
+  # EPIC 8: Visual Report Rendering & Display
+  # ============================================================================
+  epic-8: in-progress
+  8-1-implement-report-rendering-node: review
+  8-2-implement-report-display-component: review
+  epic-8-retrospective: optional
+
+  # ============================================================================
+  # EPIC 9: Large Data Resilience
+  # ============================================================================
+  epic-9: in-progress
+  9-1-implement-large-data-detection: review
+  9-2-implement-auto-downsample-recovery: review
+  epic-9-retrospective: optional
+
+  # ============================================================================
+  # EPIC 10: Code Transparency & Editing
+  # ============================================================================
+  epic-10: in-progress
+  10-1-implement-code-viewer-component: review
+  10-2-implement-editable-code-reexecution: review
+  epic-10-retrospective: optional
+
+  # ============================================================================
+  # EPIC 11: Template System
+  # ============================================================================
+  epic-11: in-progress
+  11-1-implement-template-persistence-api: review
+  11-2-implement-template-ui: review
+  epic-11-retrospective: optional
+
+  # ============================================================================
+  # EPIC 12: Developer Observability & API Resilience
+  # ============================================================================
+  epic-12: backlog
+  12-1-implement-langsmith-tracing: backlog
+  12-2-implement-llm-api-resilience: backlog
+  epic-12-retrospective: optional
+
+summary:
+  total_epics: 12
+  total_stories: 35
+  epics_in_progress: 6
+  epics_done: 0
+  stories_backlog: 26
+  stories_ready_for_dev: 4
+  stories_in_progress: 0
+  stories_in_review: 6
+  stories_done: 0
