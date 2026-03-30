@@ -51,3 +51,7 @@ yarn-error.log*
 out/
 .vercel
 
+# Other
+streamlit_app.py
+code-for-learning/
+
