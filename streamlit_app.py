@@ -30,7 +30,7 @@ def initialize_environment():
     os.environ.setdefault("LANGCHAIN_ENDPOINT", "https://api.smith.langchain.com")
     langsmith_key = os.getenv("LANGSMITH_API_KEY")
     if langsmith_key:
-        os.environ["LANGCHAIN_API_KEY"] = langsmith_key
+        # LangSmith 0.7.x reads LANGSMITH_API_KEY directly — no manual copy needed (NFR15)
         try:
             langsmith_client = LangSmithClient()
         except Exception:

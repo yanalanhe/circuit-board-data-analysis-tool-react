@@ -84,7 +84,7 @@ export default function DataGrid({ columns, dtypes, rows, onCellSave }: DataGrid
         return (
           <div
             onClick={() => handleEditCell(rowIndex, col, value)}
-            className="cursor-pointer hover:bg-blue-50 px-1 py-1 rounded transition-colors"
+            className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 px-1 py-1 rounded transition-colors"
             title="Click to edit"
           >
             {formatCellValue(value)}
@@ -156,16 +156,16 @@ export default function DataGrid({ columns, dtypes, rows, onCellSave }: DataGrid
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {/* Table container with scroll */}
-      <div className="flex-1 overflow-auto border border-gray-200 rounded">
+      <div className="flex-1 overflow-auto border border-gray-200 dark:border-gray-700 rounded">
         <table className="w-full border-collapse text-sm">
           {/* Header */}
-          <thead className="sticky top-0 bg-gray-50">
+          <thead className="sticky top-0 bg-gray-50 dark:bg-gray-800">
             {table.getHeaderGroups().map((headerGroup: HeaderGroup<Record<string, unknown>>) => (
-              <tr key={headerGroup.id} className="border-b border-gray-200">
+              <tr key={headerGroup.id} className="border-b border-gray-200 dark:border-gray-700">
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className="px-3 py-2 text-left font-semibold text-gray-700 whitespace-nowrap bg-gray-50"
+                    className="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap bg-gray-50 dark:bg-gray-800"
                     title={header.getContext().header.column.columnDef.header?.toString()}
                   >
                     {flexRender(
@@ -179,13 +179,13 @@ export default function DataGrid({ columns, dtypes, rows, onCellSave }: DataGrid
           </thead>
 
           {/* Body */}
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
             {table.getRowModel().rows.map((row: Row<Record<string, unknown>>) => (
-              <tr key={row.id} className="hover:bg-gray-50">
+              <tr key={row.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                 {row.getVisibleCells().map((cell: Cell<Record<string, unknown>, unknown>) => (
                   <td
                     key={cell.id}
-                    className="px-3 py-2 text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis"
+                    className="px-3 py-2 text-gray-900 dark:text-gray-100 whitespace-nowrap overflow-hidden text-ellipsis"
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
@@ -197,7 +197,7 @@ export default function DataGrid({ columns, dtypes, rows, onCellSave }: DataGrid
       </div>
 
       {/* Row count */}
-      <div className="mt-2 text-xs text-gray-500 flex-shrink-0">
+      <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
         Showing {rows.length} rows
       </div>
     </div>

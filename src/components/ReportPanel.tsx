@@ -16,10 +16,10 @@ export default function ReportPanel({
   const hasReport = reportCharts.length > 0 || !!reportText
 
   return (
-    <div className="h-full flex flex-col bg-white">
+    <div className="h-full flex flex-col bg-white dark:bg-gray-900">
       {/* Header */}
-      <div className="bg-gray-50 border-b border-gray-200 p-3 flex-shrink-0">
-        <h2 className="font-bold text-sm text-gray-900">Report</h2>
+      <div className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-3 flex-shrink-0">
+        <h2 className="font-bold text-sm text-gray-900 dark:text-gray-100">Report</h2>
       </div>
 
       {/* Content */}
@@ -28,8 +28,8 @@ export default function ReportPanel({
         {isLoading && (
           <div className="flex flex-col items-center justify-center h-full">
             <div className="mb-4 text-4xl text-gray-300 animate-pulse">⏳</div>
-            <p className="text-gray-700 font-medium">Generating report…</p>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-gray-700 dark:text-gray-300 font-medium">Generating report…</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
               Running analysis pipeline
             </p>
           </div>
@@ -39,10 +39,10 @@ export default function ReportPanel({
         {!isLoading && !hasReport && (
           <div className="flex flex-col items-center justify-center h-full text-center">
             <div className="mb-4 text-4xl text-gray-300">📊</div>
-            <p className="text-gray-700 font-medium">
+            <p className="text-gray-700 dark:text-gray-300 font-medium">
               Run an analysis to see results here
             </p>
-            <p className="text-gray-500 text-sm mt-2">
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
               Charts and trend analysis will display here
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function ReportPanel({
                 <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
                   Analysis
                 </h3>
-                <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
+                <p className="text-sm text-gray-800 dark:text-gray-200 whitespace-pre-wrap leading-relaxed">
                   {reportText}
                 </p>
               </div>

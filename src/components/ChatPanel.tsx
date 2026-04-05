@@ -65,12 +65,12 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ sessionId }) => {
         <div
           className={`max-w-xs px-4 py-2 rounded-lg ${
             isUser
-              ? "bg-blue-100 text-gray-900 rounded-br-none"
-              : "bg-gray-100 text-gray-900 rounded-bl-none"
+              ? "bg-blue-100 dark:bg-blue-900 text-gray-900 dark:text-gray-100 rounded-br-none"
+              : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-bl-none"
           }`}
         >
           <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-          <span className="text-xs text-gray-500 mt-1 block">
+          <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 block">
             {new Date(message.timestamp).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
@@ -82,11 +82,11 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ sessionId }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white border border-gray-300 rounded-lg shadow-sm">
+    <div className="flex flex-col h-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm">
       {/* Message History */}
-      <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+      <div className="flex-1 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-800">
         {chatHistory.length === 0 && !error ? (
-          <div className="flex items-center justify-center h-full text-gray-400">
+          <div className="flex items-center justify-center h-full text-gray-400 dark:text-gray-500">
             <p className="text-center">
               No messages yet. Start typing to begin analysis!
             </p>
@@ -96,7 +96,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ sessionId }) => {
             {chatHistory.map((message) => renderMessage(message))}
             {isLoading && (
               <div className="flex justify-start mb-4">
-                <div className="bg-gray-100 px-4 py-2 rounded-lg">
+                <div className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg">
                   <div className="flex space-x-2">
                     <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
                     <div
@@ -124,7 +124,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ sessionId }) => {
       )}
 
       {/* Input Area */}
-      <form onSubmit={handleSubmit} className="border-t border-gray-300 p-4">
+      <form onSubmit={handleSubmit} className="border-t border-gray-300 dark:border-gray-700 p-4">
         <div className="flex gap-2">
           <textarea
             value={currentMessage}
@@ -133,7 +133,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ sessionId }) => {
             placeholder="Type your analysis request and press Enter..."
             disabled={isLoading}
             rows={2}
-            className="flex-1 p-2 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+            className="flex-1 p-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 dark:disabled:bg-gray-700 disabled:cursor-not-allowed"
           />
           <button
             type="submit"
@@ -143,7 +143,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ sessionId }) => {
             Send
           </button>
         </div>
-        <p className="text-xs text-gray-500 mt-2">
+        <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
           Shift+Enter for newline, Enter to send
         </p>
       </form>

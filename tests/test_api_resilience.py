@@ -30,7 +30,7 @@ def test_translate_authentication_error():
         body={"error": {"message": "No API key provided"}},
     )
     result = translate_error(err)
-    assert result == "Add OPENAI_API_KEY to your .env file"
+    assert result == "OPENAI_API_KEY is not set. Add it to your .env file."
 
 
 # ---------------------------------------------------------------------------
@@ -86,8 +86,8 @@ def test_authentication_error_is_more_specific_than_api_error():
     assert auth_msg != api_msg, (
         "AuthenticationError must produce a different message than a generic APIError"
     )
-    assert "OPENAI_API_KEY" in auth_msg, (
-        "AuthenticationError message must identify the missing/invalid key"
+    assert "OPENAI_API_KEY is not set" in auth_msg, (
+        "AuthenticationError message must identify the missing/invalid key with 'is not set' phrase"
     )
     assert ".env" in auth_msg, (
         "AuthenticationError message must tell user where to fix it"

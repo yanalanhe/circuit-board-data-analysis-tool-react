@@ -136,9 +136,9 @@ development_status:
   # ============================================================================
   # EPIC 12: Developer Observability & API Resilience
   # ============================================================================
-  epic-12: backlog
-  12-1-implement-langsmith-tracing: backlog
-  12-2-implement-llm-api-resilience: backlog
+  epic-12: in-progress
+  12-1-implement-langsmith-tracing: review
+  12-2-implement-llm-api-resilience: review
   epic-12-retrospective: optional
 
 summary:

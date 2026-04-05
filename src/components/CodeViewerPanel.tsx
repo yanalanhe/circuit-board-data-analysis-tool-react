@@ -27,6 +27,16 @@ export default function CodeViewerPanel({
   codeError = null,
 }: CodeViewerPanelProps) {
   const [editedCode, setEditedCode] = useState(code ?? '')
+  const [isDark, setIsDark] = useState(false)
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    })
+    setIsDark(document.documentElement.classList.contains('dark'))
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    return () => observer.disconnect()
+  }, [])
 
   // Sync editedCode when a new analysis result arrives (code prop changes from AppLayout)
   useEffect(() => {
@@ -46,7 +56,7 @@ export default function CodeViewerPanel({
   return (
     <div className="h-full flex flex-col">
       {/* Re-run toolbar */}
-      <div className="flex items-center gap-2 px-3 py-2 border-b border-gray-200 bg-gray-50 flex-shrink-0">
+      <div className="flex items-center gap-2 px-3 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex-shrink-0">
         <button
           onClick={() => onRerun?.(editedCode)}
           disabled={!editedCode || isRerunning}
@@ -71,7 +81,7 @@ export default function CodeViewerPanel({
         <MonacoEditor
           height="100%"
           language="python"
-          theme="vs"
+          theme={isDark ? 'vs-dark' : 'vs'}
           value={editedCode}
           onChange={(value) => setEditedCode(value ?? '')}
           options={{

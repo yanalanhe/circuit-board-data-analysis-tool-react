@@ -53,7 +53,7 @@ export default function FileUploadArea({
       onDragOver={handleDrag}
       onDrop={handleDrop}
       className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-        dragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300 bg-gray-50'
+        dragActive ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30' : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800'
       } ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:border-blue-400'}`}
     >
       <input
@@ -68,10 +68,10 @@ export default function FileUploadArea({
 
       <label htmlFor="fileInput" className="block cursor-pointer">
         <div className="text-4xl mb-2">📁</div>
-        <p className="text-lg font-medium text-gray-700 mb-1">
+        <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-1">
           {isLoading ? 'Uploading...' : 'Drag and drop CSV files here'}
         </p>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
           or click to browse your computer
         </p>
         <button

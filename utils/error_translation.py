@@ -42,7 +42,7 @@ def _translate_error_inner(exception: Exception) -> str:
         # AuthenticationError (HTTP 401) MUST be checked before APIError because it is
         # a subclass of APIError — most specific first.
         if isinstance(exception, openai.AuthenticationError):
-            return "Add OPENAI_API_KEY to your .env file"
+            return "OPENAI_API_KEY is not set. Add it to your .env file."
         if isinstance(exception, openai.RateLimitError):
             return "AI service rate limit reached. Please wait a moment and try again."
         if isinstance(exception, openai.APIError):
