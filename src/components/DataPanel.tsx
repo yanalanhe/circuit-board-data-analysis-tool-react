@@ -7,6 +7,21 @@ import { useFileUpload } from '@/hooks/useFileUpload'
 import { useDataPreview } from '@/hooks/useDataPreview'
 import { useApi } from '@/hooks/useApi'
 
+const DEFAULT_COLUMNS = ['A', 'B', 'C']
+const DEFAULT_DTYPES = ['int64', 'int64', 'int64']
+const DEFAULT_ROWS: Record<string, unknown>[] = [
+  { A: 10, B: 15, C: 5 },
+  { A: 20, B: 25, C: 15 },
+  { A: 30, B: 35, C: 25 },
+  { A: 40, B: 45, C: 35 },
+  { A: 50, B: 55, C: 45 },
+  { A: 60, B: 65, C: 55 },
+  { A: 70, B: 75, C: 65 },
+  { A: 80, B: 85, C: 75 },
+  { A: 90, B: 95, C: 85 },
+  { A: 100, B: 105, C: 95 },
+]
+
 export default function DataPanel() {
   const { upload, isLoading, error, filenames, rowCounts, largeDataWarning } =
     useFileUpload()
@@ -101,11 +116,11 @@ export default function DataPanel() {
     <div className="h-full flex flex-col bg-white dark:bg-gray-900">
       {/* Header */}
       <div className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-3 flex-shrink-0">
-        <h2 className="font-bold text-sm text-gray-900 dark:text-gray-100">Data</h2>
+        <h2 className="font-bold text-sm text-gray-900 dark:text-gray-100">User Data Set</h2>
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto p-4 flex flex-col">
+      <div className="flex-1 overflow-hidden p-4 flex flex-col">
         {/* Error Messages */}
         {(uploadError || error) && (
           <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
@@ -163,17 +178,34 @@ export default function DataPanel() {
         )}
 
         {!hasUploadedFiles ? (
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <FileUploadArea
-              onFilesSelected={handleFilesSelected}
-              isLoading={isLoading}
-            />
+          <div className="flex-1 flex flex-col overflow-auto">
+            {/* Default dataset label */}
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 flex-shrink-0">
+              Default Dataset
+            </p>
+
+            {/* Default DataGrid */}
+            <div className="flex-shrink-0">
+              <DataGrid
+                columns={DEFAULT_COLUMNS}
+                dtypes={DEFAULT_DTYPES}
+                rows={DEFAULT_ROWS}
+              />
+            </div>
+
+            {/* Upload your own */}
+            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex-shrink-0">
+              <FileUploadArea
+                onFilesSelected={handleFilesSelected}
+                isLoading={isLoading}
+              />
+            </div>
           </div>
         ) : (
           <div className="flex-1 flex flex-col min-h-0">
             {/* Tabs for multiple files */}
             {filenames.length > 0 && (
-              <div className="flex gap-2 mb-3 border-b border-gray-200 overflow-x-auto flex-shrink-0">
+              <div className="flex gap-2 mb-3 border-b border-gray-200 dark:border-gray-700 overflow-x-auto flex-shrink-0">
                 {filenames.map((filename) => (
                   <button
                     key={filename}
@@ -219,7 +251,7 @@ export default function DataPanel() {
             </div>
 
             {/* Upload More Button */}
-            <div className="mt-4 pt-4 border-t border-gray-200 flex-shrink-0">
+            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex-shrink-0">
               <button
                 onClick={() => setActiveFile(null)}
                 className="text-sm text-blue-600 hover:text-blue-700 font-medium"
